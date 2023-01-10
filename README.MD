@@ -1,0 +1,1 @@
+# Collection of common interview questions for web developers
