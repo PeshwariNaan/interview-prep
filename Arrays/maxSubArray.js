@@ -82,6 +82,7 @@ var maxSubArray1 = function (nums) {
 };
 
 const nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4];
+const nums2 = [-2, -1, -4, -1]
 
 var maxSubArray2 = function (nums) {
   let max = nums[0];
@@ -98,4 +99,18 @@ var maxSubArray2 = function (nums) {
   return max;
 };
 
-console.log(maxSubArray(nums));
+const maxSubArray3 = (nums) => {
+  let currSum = 0;
+  let maxSum = -Infinity;
+  for (i = 0; i < nums.length; i++) {
+    currSum = Math.max(0, currSum);
+    console.log(' currSum: ', currSum);
+    currSum += nums[i];
+    console.log('second currsum', currSum);
+    maxSum = Math.max(maxSum, currSum);
+    console.log('maxSumm: ', maxSum);
+  }
+  return maxSum;
+};
+
+console.log(maxSubArray3(nums2));
