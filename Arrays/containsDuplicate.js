@@ -17,7 +17,7 @@ const containsDuplicate = (nums) => {
   return false;
 };
 
-//Better solution with linear RTC O(n)
+//Better solution with linear RTC O(n) but here we have a SC of O(n) because we are using a map(object)
 const containsDuplicate1 = (nums) => {
   obj = {};
   for (i = 0; i < nums.length; i++) {
