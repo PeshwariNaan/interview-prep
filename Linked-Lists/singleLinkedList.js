@@ -63,11 +63,11 @@ class LinkedList {
       return;
     }
     const previous = this.getAt(index - 1) || this.getLast(); //Check if the index is out of bounds and assign to last
-    console.log('previous :', previous);
-    console.log('previous.next :', previous.next);
+    //console.log('previous :', previous);
+    //console.log('previous.next :', previous.next);
     const node = new Node(data, previous.next);
     previous.next = node;
-    console.log('previous.next 2 :', previous.next);
+    //console.log('previous.next 2 :', previous.next);
   }
 
   removeAt(index) {
@@ -89,19 +89,44 @@ class LinkedList {
       return this.head;
     }
 
-    let first = this.head;
-    let second = first.next;
-    while (second) {
-      let temp = second.next;
-      second.next = first;
-      console.log('second.next ::', second.next, second);
-      first = second;
-      console.log('first ::', first, second);
-      second = temp;
-      console.log('second ::', second, second);
+    let curr = this.head;
+    let nxt = curr.next;
+    while (nxt) {
+      console.log('nxt ::', nxt);
+      let temp = nxt.next;
+      console.log('temp ::', temp);
+      nxt.next = curr;
+      console.log('nxt.next ::', nxt.next);
+      curr = nxt;
+      console.log('curr ::', curr);
+      nxt = temp;
+      console.log('nxt ::', nxt);
     }
     this.head.next = null;
-    this.head = first;
+    this.head = curr;
+  }
+
+  reverse1() {
+    if (!this.head) return;
+    if (!this.head.next) {
+      return this.head;
+    }
+
+    let nodePrev = null;
+    let nodeCurr = this.head;
+    let nodeNext = null;
+    while (nodeCurr !== null) {
+      nodeNext = nodeCurr.next;
+      console.log('nodeNext ::', nodeNext);
+      nodeCurr.next = nodePrev;
+      console.log('nodeCurr.next ::', nodeCurr.next);
+      nodePrev = nodeCurr;
+      console.log('nodePrev ::', nodePrev);
+      nodeCurr = nodeNext;
+      console.log('nodeCurr ::', nodeCurr);
+    }
+    this.head.next = null;
+    this.head = nodeCurr;
   }
 
   printList() {
@@ -115,15 +140,15 @@ class LinkedList {
   }
 }
 
-const myLinkedList = new LinkedList();
-myLinkedList.insertFirst(6);
-myLinkedList.insertFirst(5);
-myLinkedList.insertFirst(4);
-myLinkedList.insertFirst(3);
-myLinkedList.insertFirst(2);
-myLinkedList.insertFirst(1);
-console.log(myLinkedList.printList());
-myLinkedList.reverse();
-console.log(myLinkedList.printList());
-console.log('getAt(5) :', myLinkedList.getAt(5));
-console.log('getAt(0) :', myLinkedList.getAt(0));
+module.exports = { Node, LinkedList };
+
+// const myLinkedList = new LinkedList();
+// myLinkedList.insertFirst(4);
+// myLinkedList.insertFirst(3);
+// myLinkedList.insertFirst(2);
+// myLinkedList.insertFirst(1);
+// console.log(myLinkedList.printList());
+// myLinkedList.reverse();
+// console.log(myLinkedList.printList());
+// console.log('getAt(5) :', myLinkedList.getAt(5));
+// console.log('getAt(0) :', myLinkedList.getAt(0));
