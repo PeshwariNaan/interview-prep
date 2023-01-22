@@ -48,15 +48,17 @@ class Stack {
   }
 }
 
-const myStack = new Stack();
-console.log(myStack.peek());
-console.log(myStack.push('google'));
-console.log(myStack.push('udemy'));
-console.log(myStack.push('discord'));
-console.log(myStack.peek());
-console.log(myStack.pop());
-console.log(myStack.peek());
-console.log(myStack);
-console.log(myStack.pop());
-console.log(myStack.pop());
-console.log(myStack);
+module.exports = Stack;
+
+//const myStack = new Stack();
+// console.log(myStack.peek());
+// console.log(myStack.push('google'));
+// console.log(myStack.push('udemy'));
+// console.log(myStack.push('discord'));
+// console.log(myStack.peek());
+// console.log(myStack.pop());
+// console.log(myStack.peek());
+// console.log(myStack);
+// console.log(myStack.pop());
+// console.log(myStack.pop());
+// console.log(myStack);
