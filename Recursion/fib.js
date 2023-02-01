@@ -8,39 +8,42 @@
 // Example:
 //   fib(4) === 3
 
-// function fib(n) {
-//     let fibArray = []
-//     fibArray[0] = 0
-//     fibArray[1] = 1
-//     for(let i = 2; i <= n; i++) {
-//         fibArray[i] = fibArray[i-2] + fibArray[i-1]
-//     }
-//     return fibArray[n]
-// }
+function fib2(n) {
+  let fibArray = [];
+  fibArray[0] = 0;
+  fibArray[1] = 1;
+  for (let i = 2; i <= n; i++) {
+    fibArray[i] = fibArray[i - 2] + fibArray[i - 1];
+    console.log(fibArray);
+  }
+
+  return fibArray[n];
+}
 
 // Now a recursive solution - This is actually a terrible solution because the runtime Complexity is really big -  exponential runtime 2^n
 // Only way to improve this solution is to use memoization
 
-function memoize(fn){
-    const cache = {}
-    return function(...args){
-        if(cache[args]) {
-            return cache[args]
-        }
-    const result = fn.apply(this, args)
+function memoize(fn) {
+  const cache = {};
+  return function (...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+    const result = fn.apply(this, args);
     cache[args] = result;
 
-    return result
-    }
+    return result;
+  };
 }
 
 function slowfib(n) {
   if (n < 2) {
-    return n
+    return n;
   }
-  return fib(n - 1) + fib(n -2)
+  return fib(n - 1) + fib(n - 2);
 }
-fib = memoize(slowfib)
+fib = memoize(slowfib);
 
-
+console.log(slowfib(100));
+//fib(7);
 module.exports = fib;
